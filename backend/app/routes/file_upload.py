@@ -25,7 +25,7 @@ async def upload_document(file: UploadFile):
     chunks = splitter.split_text(text)
 
     # Create embeddings
-    embedder = EmbeddingsService(provider="openai")
+    embedder = EmbeddingsService(model_name="all-MiniLM-L6-v2")
     embeddings = embedder.create_embeddings(chunks)
 
     return {
