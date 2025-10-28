@@ -10,5 +10,9 @@ fastapi = "*"
 uvicorn = "*"
 python-multipart = "*"
 sentence-transformers = "*"
+sqlalchemy = "*"
+faiss-cpu = "*"
+dotenv = "*"
+pymysql = "*"
 
 [dev-packages]
