@@ -1,0 +1,776 @@
+[00:00:01.340] Server  LOG      ✓ Ready in 840ms
+[00:00:12.855] Server  LOG      ○ Compiling / ...
+[00:00:15.959] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[00:00:16.641] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:17.160] Browser ERROR   uncaughtError: ReferenceError: Toaster is not defined
+[00:00:59.427] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.429] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.432] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.434] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.437] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.439] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.440] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.443] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.445] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.446] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.448] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.449] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.450] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.452] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.454] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.455] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.458] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.460] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.461] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.463] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.465] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.467] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.469] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.470] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.472] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.473] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.474] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.476] Server  ERROR    ⨯ ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:59.478] Server  LOG      ✓ Compiled in 30ms
+[00:01:00.154] Browser ERROR   ./frontend/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/frontend
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:02.854] Server  LOG      ✓ Compiled in 41ms
+[00:03:03.152] Browser ERROR   ./frontend/app/page.tsx:4:1
+Export Toaster doesn't exist in target module
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+The export Toaster was not found in module [project]/frontend/components/ui/sonner.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:03:03.152] Browser ERROR   ./frontend/app/page.tsx:4:1
+Export Toaster doesn't exist in target module
+  2 |
+  3 | import React, { useState } from "react";
+> 4 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import UploadBox from "../components/UploadBox";
+  6 | import DocumentListBox from "../components/DocumentList";
+  7 | import AskQuestionBox from "../components/AskQuestionBox";
+
+The export Toaster was not found in module [project]/frontend/components/ui/sonner.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:03:10.146] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:03:10.720] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:13.293] Server  LOG      ✓ Compiled in 32ms
