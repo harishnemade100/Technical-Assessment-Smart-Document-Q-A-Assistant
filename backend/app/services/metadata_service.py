@@ -1,9 +1,12 @@
 from sqlalchemy.orm import Session
-from backend.app.models.models import DocumentChunk
+from fastapi import HTTPException
+from backend.app.models.models import Document
+import datetime
+
 
 class MetadataService:
     """
-    Handles saving and retrieving metadata from PostgreSQL.
+    Handles saving and retrieving metadata about documents in PostgreSQL.
     """
 
     @staticmethod
@@ -13,25 +16,45 @@ class MetadataService:
         filename: str,
         chunks: list[str],
         embedding_dim: int,
+        faiss_index_path: str = "data/faiss_index.index",
     ):
         """
-        Store chunk metadata and embedding info.
+        Saves document metadata after upload and processing.
+
+        Args:
+            db (Session): SQLAlchemy session.
+            doc_id (str): Unique document ID (UUID).
+            filename (str): Original filename.
+            chunks (list[str]): List of text chunks.
+            embedding_dim (int): Embedding dimension size.
+            faiss_index_path (str): Path to FAISS index file.
+
+        Returns:
+            Document: The saved Document record.
         """
-        for i, chunk_text in enumerate(chunks):
-            record = DocumentChunk(
-                doc_id=doc_id,
+        try:
+            if not chunks:
+                raise ValueError("No text chunks found to save metadata.")
+
+            document = Document(
+                id=doc_id,
                 filename=filename,
-                chunk_id=i,
-                page=None,
-                text=chunk_text,
-                embedding_dim=embedding_dim,
-                extra_metadata={"embedding_index": i},
+                uploaded_at=datetime.datetime.utcnow(),
+                chunk_count=len(chunks),
+                metadata={
+                    "embedding_dim": embedding_dim,
+                    "total_chunks": len(chunks),
+                },
+                faiss_index_path=faiss_index_path,
             )
-            db.add(record)
 
-        db.commit()
-        print(f"✅ Stored {len(chunks)} metadata entries for {filename}")
+            db.add(document)
+            db.commit()
+            db.refresh(document)
 
-    @staticmethod
-    def get_metadata(db: Session, doc_id: str):
-        return db.query(DocumentChunk).filter(DocumentChunk.doc_id == doc_id).all()
+            print(f"✅ Metadata saved for '{filename}' (doc_id={doc_id})")
+            return document
+
+        except Exception as e:
+            db.rollback()
+            raise HTTPException(status_code=500, detail=f"Failed to save metadata: {str(e)}")

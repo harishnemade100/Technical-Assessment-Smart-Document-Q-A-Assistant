@@ -20,5 +20,6 @@ langchain-community = ">=0.3.0"
 langchain-groq = ">=0.1.0"
 psycopg2 = "*"
 psycopg2-binary = "*"
+pypdf2 = "*"
 
 [dev-packages]

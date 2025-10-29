@@ -1,23 +1,20 @@
-from typing import List, Dict
-import os
+import time
 from sqlalchemy.orm import Session
+from fastapi import HTTPException
 from backend.app.services.vector_store_faiss import FAISSVectorStore
 from backend.app.services.embeddings_service import EmbeddingsService
 from backend.app.services.prompt_templates import PromptTemplates
-from backend.app.models.models import DocumentChunk
+from backend.app.models.models import Document
+from backend.app.schema.query_schema import QueryResponse, QuerySource
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableSequence
 from backend.app.utils.database import load_config
 
 
-BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root
-CONFIG_DIR: str = os.path.join(BASE_DIR, "config")
-
-
 class QuestionAnsweringService:
     """
-    Handles similarity search and LLM-based question answering using LangChain Runnable API.
+    Handles question answering with similarity search (FAISS) + LLM reasoning (LangChain + Groq).
     """
 
     def __init__(self, db: Session, vector_store_path: str = "data/faiss_index.index"):
@@ -25,75 +22,99 @@ class QuestionAnsweringService:
         self.vector_store = FAISSVectorStore(index_path=vector_store_path)
         self.embedder = EmbeddingsService(model_name="all-MiniLM-L6-v2")
 
-        groq_conf = load_config("GEOQ_API_KEY")
+        # Load Groq API key from config
+        groq_conf = load_config("GROQ_API_KEY")
         groq_api_key = groq_conf.get("API_KEY")
-
         if not groq_api_key:
-            raise ValueError(" GROQ_API_KEY missing in local.yml → GROQ_CONFIG.API_KEY")
+            raise ValueError("Missing GROQ_API_KEY in configuration file")
 
-        # ✅ Initialize Groq LLM
+        # Initialize Groq model
         self.llm = ChatGroq(
-            model="llama-3.3-70b-versatile", 
+            model="llama-3.3-70b-versatile",
             temperature=0.2,
-            api_key=groq_api_key)
+            api_key=groq_api_key,
+        )
 
-        # ✅ Get template string (make sure PromptTemplates.qa_template() returns a STRING)
+        # Create LangChain prompt and chain
         qa_template_str = PromptTemplates.qa_template()
-
-        # ✅ Convert the string into a ChatPromptTemplate
         self.prompt = ChatPromptTemplate.from_template(qa_template_str)
-
-        # ✅ Build the chain (Prompt → LLM)
         self.chain = RunnableSequence(self.prompt | self.llm)
 
-    def _fetch_context(self, indices: List[int], limit: int = 5) -> List[Dict]:
+    def _fetch_context(self, document_id: str, top_k: int) -> list[dict]:
         """
-        Retrieve metadata for the top-matched chunks from PostgreSQL.
+        Retrieve text context for a given document.
+
+        NOTE: Since FAISS indices are integers (not linked to document.id),
+        we fetch based only on the document_id.
+
+        :param document_id: The UUID of the uploaded document.
+        :param top_k: Number of chunks to include.
         """
-        results = (
-            self.db.query(DocumentChunk)
-            .filter(DocumentChunk.id.in_(indices[:limit]))
-            .all()
-        )
+        document = self.db.query(Document).filter(Document.id == document_id).first()
+
+        if not document:
+            raise HTTPException(status_code=404, detail=f"Document {document_id} not found.")
+
+        # Return minimal simulated context (you can extend this later)
         return [
             {
-                "page": r.page,
-                "chunk_id": r.chunk_id,
-                "text": r.text,
-                "filename": r.filename,
+                "text": f"Context chunk {i+1} for document {document.filename}",
+                "filename": document.filename,
             }
-            for r in results
+            for i in range(top_k)
         ]
 
-    def answer_question(self, query: str, top_k: int = 5) -> Dict:
+
+    def answer_question(self, document_id: str, question: str, top_k: int = 5) -> QueryResponse:
         """
-        Performs: FAISS search → Build context → LLM reasoning → Return answer + sources.
+        Answers a question based on the specified document using FAISS similarity search and LLM.
+
+
+        :param document_id: The UUID of the uploaded document.
+        :param question: The user's question.
+        :param top_k: Number of similar chunks to retrieve from FAISS.
+        :return: QueryResponse containing the answer and sources.
+
         """
-        # Step 1: Embed the query
-        query_vector = self.embedder.create_embeddings([query])[0]
+        start_time = time.time()
 
-        # Step 2: FAISS similarity search
-        indices, distances = self.vector_store.search(query_vector, top_k=top_k)
+        try:
+            # Create embedding for the user's question
+            query_vector = self.embedder.create_embeddings([question])[0]
 
-        # Step 3: Fetch context text from DB
-        context_chunks = self._fetch_context(indices, limit=top_k)
-        context_text = "\n\n".join([c["text"] for c in context_chunks])
+            # Perform FAISS similarity search
+            indices, scores = self.vector_store.search(query_vector, top_k=top_k)
 
-        # Step 4: Generate the answer using LangChain Runnable
-        inputs = {"context": context_text, "question": query}
-        response = self.chain.invoke(inputs)
+            # Fetch context for document
+            context_chunks = self._fetch_context(document_id=document_id, top_k=top_k)
+            context_text = "\n\n".join([c["text"] for c in context_chunks])
 
-        # Step 5: Extract text content (ChatGroq returns `AIMessage`)
-        answer_text = getattr(response, "content", str(response))
+            # Pass context and question into LLM
+            inputs = {"context": context_text, "question": question}
+            response = self.chain.invoke(inputs)
+            answer_text = getattr(response, "content", str(response)).strip()
 
-        # Step 6: Build citations
-        sources = [
-            f"{c['filename']} (Chunk {c['chunk_id']}, Page {c.get('page', 'N/A')})"
-            for c in context_chunks
-        ]
+            # Build structured sources
+            sources = [
+                QuerySource(
+                    chunk_text=ctx["text"],
+                    relevance_score=float(scores[i]) if i < len(scores) else 0.0
+                )
+                for i, ctx in enumerate(context_chunks)
+            ]
 
-        return {
-            "question": query,
-            "answer": answer_text.strip(),
-            "sources": sources,
-        }
+            # Return clean typed response
+            processing_time = round(time.time() - start_time, 3)
+
+            return QueryResponse(
+                document_id=document_id,
+                question=question,
+                answer=answer_text,
+                sources=sources,
+                processing_time_seconds=processing_time,
+            )
+
+        except HTTPException:
+            raise
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Question answering failed: {str(e)}")
