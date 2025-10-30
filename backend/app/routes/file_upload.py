@@ -12,7 +12,7 @@ from backend.app.schema.document_schema import UploadResponse
 from backend.app.services.metadata_service import MetadataService
 
 
-router = APIRouter(prefix="/api/documents", tags=["File Upload"])
+router = APIRouter(tags=["File Upload"])
 
 
 @router.post("/upload", response_model=UploadResponse)

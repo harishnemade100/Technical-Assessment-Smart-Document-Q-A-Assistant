@@ -6,7 +6,7 @@ from pathlib import Path
 
 from backend.app.utils.database import get_db
 
-router = APIRouter(prefix="/api/documents", tags=["Delete Document"])
+router = APIRouter(tags=["Delete Document"])
 
 
 

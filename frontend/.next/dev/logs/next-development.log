@@ -1,0 +1,393 @@
+[00:00:01.371] Server  LOG      ✓ Ready in 879ms
+[00:00:08.823] Server  LOG      ○ Compiling / ...
+[00:00:10.317] Server  ERROR    ⨯ ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+
+
+./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+
+
+./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+
+
+./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+
+[00:00:13.089] Browser ERROR   uncaughtError: Error: ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+
+
+[00:00:13.332] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.332] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.332] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.332] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.949] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.949] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.949] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:00:13.949] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:01:02.049] Server  LOG      ✓ Compiled in 58ms
+[00:01:03.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:56.916] Server  LOG      ✓ Compiled in 24ms
+[00:01:57.441] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:01:57.441] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardHeader doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardHeader was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:01:57.442] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-client] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:01:57.442] Browser ERROR   ./frontend/app/page.tsx:7:1
+Export CardTitle doesn't exist in target module
+   5 | import { Button } from "@/components/ui/button";
+   6 | import { Input } from "@/components/ui/input";
+>  7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Toaster, toast } from "sonner";
+   9 |
+  10 | export default function Page() {
+
+The export CardTitle was not found in module [project]/frontend/components/ui/card.tsx [app-ssr] (ecmascript).
+Did you mean to import Card?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/app/page.tsx [Client Component Browser]
+    ./frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/app/page.tsx [Client Component SSR]
+    ./frontend/app/page.tsx [Server Component]
+[00:02:02.057] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
