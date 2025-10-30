@@ -21,5 +21,6 @@ langchain-groq = ">=0.1.0"
 psycopg2 = "*"
 psycopg2-binary = "*"
 pypdf2 = "*"
+npm = "*"
 
 [dev-packages]

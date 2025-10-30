@@ -1,93 +1,85 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Button } from "../components/ui/button";
-import { Loader2, Send } from "lucide-react";
-import { Card, CardContent } from "../components/ui/card";
-import { useToast } from "../components/ui/use-toast";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Loader2, MessageSquare } from "lucide-react";
 
-const API_URL = "http://127.0.0.1:8000/api/qa/query";
+const API_BASE_URL = "http://127.0.0.1:8000/api/qa/query";
 
-export default function AskQuestionBox({ selectedDocId }: { selectedDocId?: string | null }) {
+export default function AskQuestionBox() {
   const [documentId, setDocumentId] = useState("");
   const [question, setQuestion] = useState("");
-  const [response, setResponse] = useState<any>(null);
+  const [answer, setAnswer] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
 
   const handleAsk = async () => {
     if (!documentId || !question) {
-      toast({
-        title: "Missing fields",
-        description: "Please enter both document ID and question.",
-        variant: "destructive",
-      });
+      toast.error("Please enter both Document ID and your question!");
       return;
     }
 
     try {
       setLoading(true);
-      const res = await axios.post(`${API_URL}?document_id=${documentId}&question=${encodeURIComponent(question)}`);
-      setResponse(res.data);
-      toast({ title: "Answer received", description: "Your question was processed successfully!" });
-    } catch (err) {
-      console.error(err);
-      toast({
-        title: "Error",
-        description: "Failed to fetch answer from backend.",
-        variant: "destructive",
-      });
+      setAnswer(null);
+      const res = await axios.post(
+        `${API_BASE_URL}?document_id=${documentId}&question=${encodeURIComponent(question)}`
+      );
+
+      setAnswer(res.data.answer);
+      toast.success("✅ Question answered!");
+    } catch (error: any) {
+      console.error(error);
+      toast.error("❌ Failed to get answer!");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto mt-6 p-6 shadow-md border border-gray-200 bg-white">
-      <h2 className="text-lg font-semibold text-gray-800 mb-3">💬 Ask a Question</h2>
-      <CardContent className="space-y-4">
-        <input
-          type="text"
-          value={documentId}
-          onChange={(e) => setDocumentId(e.target.value)}
-          placeholder="Enter Document ID"
-          className="w-full border rounded-lg p-2 text-gray-700"
-        />
-        <textarea
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Type your question here..."
-          rows={3}
-          className="w-full border rounded-lg p-2 text-gray-700"
-        />
-        <Button
-          onClick={handleAsk}
-          disabled={loading}
-          className="bg-green-600 hover:bg-green-700 text-white font-medium"
-        >
-          {loading ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : <Send className="w-4 h-4 mr-2" />}
-          {loading ? "Asking..." : "Ask Question"}
-        </Button>
+    <div className="bg-gray-800/70 border border-gray-700 p-6 rounded-2xl shadow-lg text-center space-y-4">
+      <h2 className="text-xl font-semibold text-white">💬 Ask a Question</h2>
 
-        {response && (
-          <div className="mt-4 border-t pt-4">
-            <h3 className="font-semibold text-gray-800">Answer:</h3>
-            <p className="text-gray-700 mt-1">{response.answer}</p>
+      <input
+        type="text"
+        placeholder="Enter Document ID"
+        value={documentId}
+        onChange={(e) => setDocumentId(e.target.value)}
+        className="w-full bg-gray-800 border border-gray-600 text-gray-200 rounded-lg p-2 
+                   focus:ring-2 focus:ring-indigo-600 outline-none"
+      />
 
-            <h4 className="font-medium text-gray-800 mt-4">Sources:</h4>
-            <ul className="list-disc list-inside text-gray-600 text-sm">
-              {response.sources?.map((src: any, idx: number) => (
-                <li key={idx}>{src.chunk_text}</li>
-              ))}
-            </ul>
+      <textarea
+        placeholder="Type your question..."
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+        className="w-full bg-gray-800 border border-gray-600 text-gray-200 rounded-lg p-2 
+                   focus:ring-2 focus:ring-indigo-600 outline-none h-24 resize-none"
+      />
 
-            <p className="text-xs text-gray-500 mt-2">
-              ⏱ {response.processing_time_seconds}s | Doc ID: {response.document_id}
-            </p>
-          </div>
+      <Button
+        onClick={handleAsk}
+        disabled={loading}
+        className="w-full flex justify-center items-center gap-2 bg-indigo-600 hover:bg-indigo-700"
+      >
+        {loading ? (
+          <>
+            <Loader2 className="w-5 h-5 animate-spin" /> Searching...
+          </>
+        ) : (
+          <>
+            <MessageSquare className="w-5 h-5" /> Ask Question
+          </>
         )}
-      </CardContent>
-    </Card>
+      </Button>
+
+      {answer && (
+        <div className="mt-4 p-4 bg-gray-900/60 border border-gray-700 rounded-xl text-left text-gray-300">
+          <h3 className="font-semibold text-indigo-400 mb-2">Answer:</h3>
+          <p>{answer}</p>
+        </div>
+      )}
+    </div>
   );
 }

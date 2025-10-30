@@ -5,7 +5,8 @@ from backend.app.utils.database import get_db
 from backend.app.services.question_answering import QuestionAnsweringService
 from backend.app.schema.query_schema import QueryResponse
 
-router = APIRouter(prefix="/api/documents", tags=["Question Answering"])
+
+router = APIRouter(tags=["Question Answering"])
 
 
 @router.post("/query", response_model=QueryResponse)
