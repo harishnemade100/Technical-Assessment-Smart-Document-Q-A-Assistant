@@ -5,7 +5,7 @@ from backend.app.models.models import Document
 
 from backend.app.utils.database import get_db
 
-router = APIRouter(prefix="/upload", tags=["File list"])
+router = APIRouter(tags=["List Documents"])
 
 
 @router.get("/", response_model=list[DocumentOut])
