@@ -5,6 +5,7 @@ A mini-project built using **FastAPI**, **Next.js**, **LangChain**, **FAISS**, a
 This project demonstrates a complete **Retrieval-Augmented Generation (RAG)** pipeline — combining document retrieval with AI models to produce accurate, document-based answers.
 
 ---
+🎥 Demo Video: https://drive.google.com/file/d/1ygtesu6QX_bHRywi9_rcBRMsXwIpw3zY/view?usp=drive_link
 
 ## 🚀 Features
 
