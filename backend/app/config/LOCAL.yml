@@ -1,0 +1,9 @@
+DATABASE:
+    DATABASE_NAME: "smart_doc_qa_local"
+    HOST: "localhost"
+    PORT: 5433
+    USER_NAME: "postgres"
+    PASSWORD: "Harish@123"
+
+GROQ_API_KEY:
+    API_KEY: "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"
