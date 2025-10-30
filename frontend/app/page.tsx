@@ -1,43 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
-import {Toaster } from "../components/ui/toaster";
-// import { Toaster } from "@/components/ui/sonner";
-import UploadBox from "../components/UploadBox";
-import DocumentListBox from "../components/DocumentList";
-import AskQuestionBox from "../components/AskQuestionBox";
+import { useState } from "react";
+import UploadBox from "@/components/UploadBox";
+import DocumentList from "@/components/DocumentList";
+import AskQuestionBox from "@/components/AskQuestionBox";
+import ThemeToggle from "@/components/ThemeToggle";
+import { Toaster } from "sonner";
 
 export default function Page() {
-  const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("upload");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 flex flex-col items-center p-6 space-y-8">
-      {/* 🌟 Header */}
-      <header className="text-center mt-6">
-        <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight">
-          Smart Document Q&A Assistant
-        </h1>
-        <p className="text-gray-600 mt-2">
-          Upload a document, view all your files, and ask questions instantly.
-        </p>
-      </header>
+    <div className="min-h-screen bg-gray-950 text-gray-200 flex flex-col items-center py-10 px-4">
+      <div className="w-full max-w-5xl">
+        {/* Header */}
+        <header className="flex items-center justify-between mb-10">
+          <h1 className="text-3xl font-bold text-indigo-400 tracking-wide">
+            ⚡ Smart Document Q&A Assistant
+          </h1>
+          <ThemeToggle />
+        </header>
 
-      {/* 📂 Upload Section */}
-      <section className="w-full max-w-3xl">
-        <UploadBox onUploadSuccess={() => window.location.reload()} />
-      </section>
+        {/* Navigation Tabs */}
+        <nav className="flex justify-center gap-4 mb-8">
+          {["upload", "list", "ask"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${
+                activeTab === tab
+                  ? "bg-indigo-600 text-white shadow-lg"
+                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              }`}
+            >
+              {tab === "upload"
+                ? "📁 Upload"
+                : tab === "list"
+                ? "📜 Documents"
+                : "❓ Ask Question"}
+            </button>
+          ))}
+        </nav>
 
-      {/* 📜 Documents List */}
-      <section className="w-full max-w-3xl">
-        <DocumentListBox />
-      </section>
+        {/* Content */}
+        <main className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 shadow-2xl">
+          {activeTab === "upload" && <UploadBox onUpload={() => setActiveTab("list")} />}
+          {activeTab === "list" && <DocumentList />}
+          {activeTab === "ask" && <AskQuestionBox />}
+        </main>
+      </div>
 
-      {/* 💬 Ask Question */}
-      <section className="w-full max-w-3xl">
-        <AskQuestionBox selectedDocId={selectedDocId} />
-      </section>
-
-      <Toaster />
+      <Toaster position="top-right" />
     </div>
   );
 }

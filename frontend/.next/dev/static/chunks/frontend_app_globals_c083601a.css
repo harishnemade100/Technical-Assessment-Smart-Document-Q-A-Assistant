@@ -3,6 +3,7 @@
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {
       --tw-border-style: solid;
+      --tw-leading: initial;
       --tw-outline-style: solid;
       --tw-duration: initial;
       --tw-shadow: 0 0 #0000;
@@ -55,8 +56,8 @@
   display: flex;
 }
 
-.inline-flex {
-  display: inline-flex;
+.grid {
+  display: grid;
 }
 
 .min-h-screen {
@@ -67,16 +68,8 @@
   width: 100%;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.list-inside {
-  list-style-position: inside;
-}
-
-.list-disc {
-  list-style-type: disc;
+.resize-none {
+  resize: none;
 }
 
 .flex-col {
@@ -103,27 +96,48 @@
   overflow: auto;
 }
 
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.rounded-full {
+  border-radius: 3.40282e38px;
+}
+
 .border {
   border-style: var(--tw-border-style);
   border-width: 1px;
 }
 
-.border-t {
-  border-top-style: var(--tw-border-style);
-  border-top-width: 1px;
+.border-4 {
+  border-style: var(--tw-border-style);
+  border-width: 4px;
 }
 
-.bg-transparent {
-  background-color: #0000;
+.border-b {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
 }
 
-.bg-gradient-to-br {
-  --tw-gradient-position: to bottom right in oklab;
-  background-image: linear-gradient(var(--tw-gradient-stops));
+.border-t-transparent {
+  border-top-color: #0000;
 }
 
 .text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.leading-none {
+  --tw-leading: 1;
+  line-height: 1;
+}
+
+.break-all {
+  word-break: break-all;
 }
 
 .whitespace-pre-wrap {
@@ -147,12 +161,6 @@
   transition-duration: var(--tw-duration, 0s);
 }
 
-.transition-colors {
-  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-  transition-timing-function: var(--tw-ease, ease);
-  transition-duration: var(--tw-duration, 0s);
-}
-
 .transition-opacity {
   transition-property: opacity;
   transition-timing-function: var(--tw-ease, ease);
@@ -162,6 +170,16 @@
 .duration-300 {
   --tw-duration: .3s;
   transition-duration: .3s;
+}
+
+.outline-none {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+
+.file\:border-0::file-selector-button {
+  border-style: var(--tw-border-style);
+  border-width: 0;
 }
 
 .focus\:ring-2:focus {
@@ -179,26 +197,13 @@
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
-.focus-visible\:ring-offset-2:focus-visible {
-  --tw-ring-offset-width: 2px;
-  --tw-ring-offset-shadow: var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-}
-
 .focus-visible\:outline-none:focus-visible {
   --tw-outline-style: none;
   outline-style: none;
 }
 
-.disabled\:pointer-events-none:disabled {
-  pointer-events: none;
-}
-
 .disabled\:opacity-50:disabled {
   opacity: .5;
-}
-
-.disabled\:opacity-60:disabled {
-  opacity: .6;
 }
 
 body {
@@ -210,6 +215,11 @@ body {
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+
+@property --tw-leading {
+  syntax: "*";
+  inherits: false
 }
 
 @property --tw-outline-style {
