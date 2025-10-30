@@ -1,28 +1,23 @@
-# Technical-Assessment-Smart-Document-Q-A-Assistant
-Build a FastAPI application with a Next.js frontend that allows users to upload documents (PDF/TXT) and ask questions about them using RAG (Retrieval-Augmented Generation) powered by LangChain and vector embeddings.
+# 🧠 Smart Document Q&A Assistant
 
+A mini-project built using **FastAPI**, **Next.js**, **LangChain**, **FAISS**, and **PostgreSQL** that allows users to **upload documents (PDF/TXT)** and **ask AI questions** directly from their content.
 
-🧠 Smart Document Q&A Assistant
+This project demonstrates a complete **Retrieval-Augmented Generation (RAG)** pipeline — combining document retrieval with AI models to produce accurate, document-based answers.
 
-A mini-project built using FastAPI, Next.js, LangChain, FAISS, and PostgreSQL that allows users to upload documents (PDF/TXT) and ask AI questions based on their content.
+---
 
-This project demonstrates the use of Retrieval-Augmented Generation (RAG) — combining document retrieval and AI language models to produce accurate, context-based answers.
+## 🚀 Features
 
-🚀 Features
+- 📤 Upload PDF or TXT documents
+- 🧠 Generate embeddings using Hugging Face or OpenAI
+- 💾 Store embeddings in **FAISS** for similarity search
+- 🗃️ Save document metadata in **PostgreSQL**
+- ❓ Ask questions and get AI answers with references
+- 💻 Responsive frontend built with **Next.js + Tailwind CSS**
 
-📤 Upload PDF or TXT documents
+---
 
-🔍 Extract and process text into small chunks
-
-🧠 Generate embeddings using Hugging Face (all-MiniLM-L6-v2) or OpenAI
-
-💾 Store embeddings in FAISS for fast similarity search
-
-🗃️ Store document metadata in PostgreSQL
-
-❓ Ask questions and get AI answers with references
-
-💻 Responsive web UI built with Next.js + Tailwind CSS
+## 🏗️ System Architecture
 
 Frontend --- >
 <img width="1490" height="816" alt="fornted" src="https://github.com/user-attachments/assets/a3b2bc95-ce86-41c0-b8ae-c0eddf8117c8" />
@@ -46,14 +41,19 @@ User → Next.js Frontend → FastAPI Backend
         ↓
   Display Answer on Frontend
 
-⚙️ Tech Stack
-Layer	Technology
-Frontend	Next.js, React, Tailwind CSS, Axios
-Backend	FastAPI, LangChain
-AI Models	Hugging Face / OpenAI
-Vector Store	FAISS
-Database	PostgreSQL
-File Handling	PyPDF2
+  
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | Next.js, React, Tailwind CSS, Axios |
+| **Backend** | FastAPI, LangChain |
+| **AI Models** | Hugging Face / OpenAI |
+| **Vector Database** | FAISS |
+| **Metadata Storage** | PostgreSQL |
+| **Text Extraction** | PyPDF2 |
+
+
 📁 Folder Structure
 smart-document-qa-assistant/
 │
@@ -78,15 +78,22 @@ smart-document-qa-assistant/
 ├── .env.example                    # Environment variables template
 └── README.md
 
-🔑 Environment Variables
+## 🔑 Environment Variables
 
-Create a .env file inside your backend folder:
+---
 
+## 🔑 Environment Variables
+
+Create a `.env` file inside your `backend/` folder:
+
+```bash
 DATABASE_URL=postgresql://username:password@localhost:5432/qa_assistant
 FAISS_INDEX_PATH=./data/faiss_index
 UPLOAD_FOLDER=./uploads
 EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
 
+# Optional if using OpenAI
+OPENAI_API_KEY=your_openai_api_key_here
 
 (Optional for OpenAI)
 
