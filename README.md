@@ -81,10 +81,6 @@ smart-document-qa-assistant/
 
 ## 🔑 Environment Variables
 
----
-
-## 🔑 Environment Variables
-
 Create a `.env` file inside your `backend/` folder:
 
 ```bash
@@ -115,11 +111,15 @@ Save file details in PostgreSQL
 Ask question → Convert to embedding → Retrieve top chunks from FAISS
 
 Send context to AI → Generate and return answer
-
+```
+```bash
 ⚙️ Setup Instructions
 1️⃣ Clone Repository
 git clone https://github.com/<your-username>/smart-document-qa-assistant.git
 cd smart-document-qa-assistant
+```
+
+```bash
 
 2️⃣ Backend Setup
 cd backend
@@ -133,10 +133,11 @@ cd frontend
 npm install
 npm run dev
 
-
 Backend runs on http://localhost:8000
 
 Frontend runs on http://localhost:3000
+
+```
 
 🧩 Example API
 📤 Upload a Document
@@ -157,6 +158,7 @@ Your FastAPI application should implement the following endpoints:
 
    <img width="1408" height="788" alt="responce of delete the file" src="https://github.com/user-attachments/assets/6242d4ef-40f3-4e0c-b0b5-1637eee1ccf7" />
 
+```bash
 Example Script:
 
 “This project is a Smart Document Q&A Assistant.
@@ -176,6 +178,8 @@ Deploy full project (Vercel + Render)
 
 Stream answers in real time
 
+```
+
 👨‍💻 Author
 
 Name: [Your Full Name]
@@ -183,7 +187,10 @@ Email: [Your Email]
 LinkedIn: [Your LinkedIn Profile]
 GitHub: [Your GitHub Profile]
 
+```
+```bash 
 🏁 Conclusion
 
 This project demonstrates how AI + Vector Databases + FastAPI can make documents searchable and interactive.
 It’s a practical mini-project showcasing real-world concepts like RAG, FAISS similarity search, and AI-powered question answering.
+```
