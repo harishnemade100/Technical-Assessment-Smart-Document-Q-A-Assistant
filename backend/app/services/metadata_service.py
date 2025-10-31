@@ -1,7 +1,8 @@
+import datetime
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from backend.app.models.models import Document
-import datetime
+from constants import DEFAULT_FAISS_INDEX_PATH
 
 
 class MetadataService:
@@ -16,7 +17,7 @@ class MetadataService:
         filename: str,
         chunks: list[str],
         embedding_dim: int,
-        faiss_index_path: str = "data/faiss_index.index",
+        faiss_index_path: str = DEFAULT_FAISS_INDEX_PATH,
     ):
         """
         Saves document metadata after upload and processing.
