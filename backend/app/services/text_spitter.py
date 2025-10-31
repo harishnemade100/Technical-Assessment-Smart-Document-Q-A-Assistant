@@ -1,4 +1,4 @@
-from backend.app.settings.constants import DEFAULT_CHUNK_SIZE, DEFAULT_OVERLAP
+from constants import DEFAULT_CHUNK_SIZE, DEFAULT_OVERLAP
 
 
 class TextSplitter:

@@ -2,7 +2,7 @@ import os
 import faiss
 import numpy as np
 from fastapi import HTTPException
-from backend.app.settings.constants import DEFAULT_EMBEDDING_DIM, DEFAULT_FAISS_INDEX_PATH, DEFAULT_TOP_K_RESULTS 
+from constants import DEFAULT_EMBEDDING_DIM, DEFAULT_FAISS_INDEX_PATH, DEFAULT_TOP_K_RESULTS 
 
 
 class FAISSVectorStore:

@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes import file_upload, qa_routes, list_documents_route, delete_document_route
 from backend.app.utils.database import engine, Base
 
-app = FastAPI(title="Document Processing API")
+app = FastAPI(title="Smart Document Q&A Assistant BackEnd API With FastAPI")
 
 Base.metadata.create_all(bind=engine)
 
@@ -12,7 +12,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(file_upload.router, prefix="/api/documents")
 app.include_router(list_documents_route.router, prefix="/api/documents")
 app.include_router(delete_document_route.router, prefix="/api/documents")
-app.include_router(qa_routes.router, prefix="/api/qa")
+app.include_router(qa_routes.routcer, prefix="/api/qa")
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -27,4 +27,4 @@ app.add_middleware(
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the Document Processing API 🚀"}
+    return {"message": "Welcome to the Document Processing API "}

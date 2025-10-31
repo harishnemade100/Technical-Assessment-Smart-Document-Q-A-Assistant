@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 from fastapi import HTTPException
-from backend.app.settings.constants import DEFAULT_EMBEDDING_MODEL
+from constants import DEFAULT_EMBEDDING_MODEL
 
 
 class EmbeddingsService:

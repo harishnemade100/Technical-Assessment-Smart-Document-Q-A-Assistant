@@ -10,7 +10,7 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableSequence
 from backend.app.utils.database import load_config
-from backend.app.settings.constants import (
+from constants import (
     DEFAULT_FAISS_INDEX_PATH,
     DEFAULT_LLM_MODEL,
     DEFAULT_LLM_TEMPERATURE,

@@ -10,8 +10,9 @@ from typing import Generator, Optional, Dict, Any
 load_dotenv()
 
 # --- Directory setup ---
-BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root
-CONFIG_DIR: str = os.path.join(BASE_DIR, "config")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
+CONFIG_DIR = os.path.join(PROJECT_ROOT, "config")       
 
 
 def load_config(section: Optional[str] = None) -> Dict[str, Any]:
@@ -28,7 +29,7 @@ def load_config(section: Optional[str] = None) -> Dict[str, Any]:
 
     # Fallback: root/local.yml
     if not os.path.exists(config_file):
-        config_file = os.path.join(BASE_DIR, "local.yml")
+        config_file = os.path.join(PROJECT_ROOT, "local.yml")
 
     if not os.path.exists(config_file):
         raise FileNotFoundError(f"Config file not found: {config_file}")
