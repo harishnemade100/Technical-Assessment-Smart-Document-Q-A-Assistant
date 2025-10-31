@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer
 from fastapi import HTTPException
+from backend.app.settings.constants import DEFAULT_EMBEDDING_MODEL
 
 
 class EmbeddingsService:
@@ -7,7 +8,7 @@ class EmbeddingsService:
     Generates embeddings using a Hugging Face SentenceTransformer model.
     """
 
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name: str = DEFAULT_EMBEDDING_MODEL):
         try:
             print(f"🔹 Loading Hugging Face model: {model_name} ...")
             self.model = SentenceTransformer(model_name)

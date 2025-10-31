@@ -1,16 +1,23 @@
+from backend.app.settings.constants import DEFAULT_CHUNK_SIZE, DEFAULT_OVERLAP
+
+
 class TextSplitter:
     """
     Splits text into smaller chunks for embedding.
     Each chunk overlaps to preserve context.
     """
 
-    def __init__(self, chunk_size: int = 800, overlap: int = 100):
+    def __init__(self, chunk_size: int = DEFAULT_CHUNK_SIZE, overlap: int = DEFAULT_OVERLAP):
         self.chunk_size = chunk_size
         self.overlap = overlap
 
     def split_text(self, text: str) -> list[str]:
         """
-        Splits text into overlapping chunks.
+        Splits text into overlapping chunks based on configured chunk size and overlap.
+
+        :param text: The full text to split.
+        :return: List of text chunks.
+
         """
         try:
             if not text:
