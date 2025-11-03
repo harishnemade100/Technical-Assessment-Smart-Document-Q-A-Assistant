@@ -10,6 +10,13 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableSequence
 from backend.app.utils.database import load_config
+from constants import (
+    DEFAULT_FAISS_INDEX_PATH,
+    DEFAULT_LLM_MODEL,
+    DEFAULT_LLM_TEMPERATURE,
+    DEFAULT_TOP_K_RESULTS,
+    DEFAULT_EMBEDDING_MODEL
+)
 
 
 class QuestionAnsweringService:
@@ -17,10 +24,10 @@ class QuestionAnsweringService:
     Handles question answering with similarity search (FAISS) + LLM reasoning (LangChain + Groq).
     """
 
-    def __init__(self, db: Session, vector_store_path: str = "data/faiss_index.index"):
+    def __init__(self, db: Session, vector_store_path: str = DEFAULT_FAISS_INDEX_PATH):
         self.db = db
         self.vector_store = FAISSVectorStore(index_path=vector_store_path)
-        self.embedder = EmbeddingsService(model_name="all-MiniLM-L6-v2")
+        self.embedder = EmbeddingsService(model_name=DEFAULT_EMBEDDING_MODEL)
 
         # Load Groq API key from config
         groq_conf = load_config("GROQ_API_KEY")
@@ -30,8 +37,8 @@ class QuestionAnsweringService:
 
         # Initialize Groq model
         self.llm = ChatGroq(
-            model="llama-3.3-70b-versatile",
-            temperature=0.2,
+            model= DEFAULT_LLM_MODEL,
+            temperature=DEFAULT_LLM_TEMPERATURE,
             api_key=groq_api_key,
         )
 
@@ -65,7 +72,7 @@ class QuestionAnsweringService:
         ]
 
 
-    def answer_question(self, document_id: str, question: str, top_k: int = 5) -> QueryResponse:
+    def answer_question(self, document_id: str, question: str, top_k: int = DEFAULT_TOP_K_RESULTS) -> QueryResponse:
         """
         Answers a question based on the specified document using FAISS similarity search and LLM.
 
