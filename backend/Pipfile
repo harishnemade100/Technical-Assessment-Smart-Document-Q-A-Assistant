@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 requests = "*"
-pymupdf = "*"
 fastapi = "0.120.1"
 uvicorn = "*"
 python-multipart = "*"
@@ -21,6 +20,5 @@ langchain-groq = ">=0.1.0"
 psycopg2 = "*"
 psycopg2-binary = "*"
 pypdf2 = "*"
-npm = "*"
 
 [dev-packages]
