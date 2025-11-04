@@ -2,7 +2,7 @@ import datetime
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from backend.app.models.models import Document
-from constants import DEFAULT_FAISS_INDEX_PATH
+from backend.app.settings.constants import DEFAULT_FAISS_INDEX_PATH
 
 
 class MetadataService:
