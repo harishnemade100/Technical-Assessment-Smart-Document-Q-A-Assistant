@@ -22,28 +22,57 @@ export default function DocumentList() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
 
+  // ✅ Helper function to get the token safely
+  const getAuthToken = () => {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem("token"); // 👈 ensure matches your login save key
+  };
+
+  // ✅ Axios instance that includes Authorization header
+  const axiosAuth = axios.create({
+    baseURL: API_BASE_URL,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${getAuthToken()}`,
+    },
+  });
+
+  // ✅ Fetch documents
   const fetchDocuments = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(API_BASE_URL);
+      const res = await axiosAuth.get("/");
       setDocuments(res.data);
-    } catch {
-      toast.error("❌ Failed to fetch documents");
+    } catch (error: any) {
+      console.error("Fetch error:", error);
+      if (error.response?.status === 401) {
+        toast.error("⚠️ Unauthorized! Please login again.");
+        localStorage.removeItem("token");
+        window.location.reload();
+      } else {
+        toast.error("❌ No Any Document Upload");
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Delete document
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`${API_BASE_URL}${id}`);
+      await axiosAuth.delete(`/${id}`);
       toast.success("🗑️ Document deleted");
       fetchDocuments();
-    } catch {
-      toast.error("Delete failed");
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        toast.error("⚠️ Session expired! Login again.");
+      } else {
+        toast.error("Delete failed");
+      }
     }
   };
 
+  // ✅ Copy document ID
   const handleCopyId = (id: string) => {
     navigator.clipboard.writeText(id);
     toast.success("📋 Document ID copied!");
@@ -54,7 +83,7 @@ export default function DocumentList() {
   }, []);
 
   const filteredDocs = documents.filter((doc) =>
-    doc.filename.toLowerCase().includes(search.toLowerCase())
+    doc.filename?.toLowerCase().includes(search.toLowerCase())
   );
 
   if (loading) return <Spinner />;
@@ -71,7 +100,7 @@ export default function DocumentList() {
           </span>
         </h2>
 
-        {/* Search */}
+        {/* Search Bar */}
         <div className="relative">
           <Search className="absolute left-3 top-3 text-gray-500 w-5 h-5" />
           <input

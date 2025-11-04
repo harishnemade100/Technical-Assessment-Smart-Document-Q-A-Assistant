@@ -23,21 +23,34 @@ export default function UploadBox() {
       return;
     }
 
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("❌ Please login first!");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("file", file);
 
     try {
       setLoading(true);
-      setResponseData(null); // clear old data
+      setResponseData(null);
+
       const res = await axios.post(API_BASE_URL, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`, // ✅ JWT token added here
+          Accept: "application/json",
+        },
       });
 
-      setResponseData(res.data); // ✅ Save backend response
-      toast.success("File uploaded successfully!");
-    } catch (error) {
+      setResponseData(res.data);
+      toast.success("✅ File uploaded successfully!");
+    } catch (error: any) {
       console.error(error);
-      toast.error("Upload failed!");
+      if (error.response?.status === 401)
+        toast.error("⚠️ Unauthorized! Please login again.");
+      else toast.error("Upload failed!");
     } finally {
       setLoading(false);
       setFile(null);
@@ -73,7 +86,7 @@ export default function UploadBox() {
         )}
       </Button>
 
-      {/* ✅ Display the response JSON */}
+      {/* ✅ Show API Response */}
       {responseData && (
         <div className="mt-6 text-left bg-gray-900/60 border border-gray-700 rounded-lg p-4">
           <h3 className="text-lg font-semibold text-indigo-400 mb-2">

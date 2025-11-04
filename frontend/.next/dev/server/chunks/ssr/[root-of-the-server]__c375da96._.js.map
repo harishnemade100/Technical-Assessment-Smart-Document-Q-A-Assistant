@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///D:/Project_learn/Technical-Assessment-Smart-Document-Q-A-Assistant/frontend/app/layout.tsx"],"sourcesContent":["'use client';\r\n\r\nimport './globals.css';\r\nimport { Toaster } from 'react-hot-toast';\r\n\r\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\r\n  return (\r\n    <html lang=\"en\">\r\n      <body className=\"min-h-screen bg-gray-50 text-gray-900\">\r\n        <Toaster position=\"top-right\" reverseOrder={false} />\r\n        <main className=\"max-w-4xl mx-auto p-4\">{children}</main>\r\n      </body>\r\n    </html>\r\n  );\r\n}"],"names":[],"mappings":";;;;;AAGA;AAHA;;;;AAKe,SAAS,WAAW,EAAE,QAAQ,EAAiC;IAC5E,qBACE,8OAAC;QAAK,MAAK;kBACT,cAAA,8OAAC;YAAK,WAAU;;8BACd,8OAAC,kKAAO;oBAAC,UAAS;oBAAY,cAAc;;;;;;8BAC5C,8OAAC;oBAAK,WAAU;8BAAyB;;;;;;;;;;;;;;;;;AAIjD","debugId":null}}]
+}
