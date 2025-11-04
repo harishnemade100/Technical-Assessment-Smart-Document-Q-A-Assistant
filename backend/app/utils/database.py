@@ -10,7 +10,9 @@ from typing import Generator, Optional, Dict, Any
 load_dotenv()
 
 # --- Directory setup ---
-CONFIG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "LOCAL.yml")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
+CONFIG_DIR = os.path.join(PROJECT_ROOT,"backend", "LOCAL.yml")
 
 
 def load_config(section: Optional[str] = None) -> Dict[str, Any]:
@@ -22,16 +24,16 @@ def load_config(section: Optional[str] = None) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: Config dictionary or subsection.
     """
-    if not os.path.exists(CONFIG_PATH):
-        raise FileNotFoundError(f"Config file not found: {CONFIG_PATH}")
+    if not os.path.exists(CONFIG_DIR):
+        raise FileNotFoundError(f"Config file not found: {CONFIG_DIR}")
 
-    with open(CONFIG_PATH, "r") as f:
+    with open(CONFIG_DIR, "r") as f:
         config: Dict[str, Any] = yaml.safe_load(f) or {}
 
     if section:
         if section not in config:
             raise KeyError(
-                f"Expected section '{section}' in {CONFIG_PATH}, found {list(config.keys())}"
+                f"Expected section '{section}' in {CONFIG_DIR}, found {list(config.keys())}"
             )
         return config[section]
 
