@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.routes import file_upload, qa_routes, list_documents_route, delete_document_route
+from backend.app.routes import file_upload, qa_routes, list_documents_route, delete_document_route, auth_route
 from backend.app.utils.database import engine, Base
 
 app = FastAPI(title="Smart Document Q&A Assistant BackEnd API With FastAPI")
@@ -9,6 +9,7 @@ Base.metadata.create_all(bind=engine)
 
 
 # ✅ Register routers under one consistent prefix
+app.include_router(auth_route.router)
 app.include_router(file_upload.router, prefix="/api/documents")
 app.include_router(list_documents_route.router, prefix="/api/documents")
 app.include_router(delete_document_route.router, prefix="/api/documents")

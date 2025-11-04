@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from backend.app.services.vector_store_faiss import FAISSVectorStore
 from backend.app.services.embeddings_service import EmbeddingsService
 from backend.app.services.prompt_templates import PromptTemplates
-from backend.app.models.models import Document
+from backend.app.models.doc_models import Document
 from backend.app.schema.query_schema import QueryResponse, QuerySource
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate

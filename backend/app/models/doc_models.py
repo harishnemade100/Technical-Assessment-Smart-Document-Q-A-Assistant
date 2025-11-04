@@ -1,29 +1,29 @@
-from sqlalchemy import Column, Integer, String, JSON, DateTime
+from sqlalchemy import Column, Integer, String, JSON, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 import datetime
 
 from backend.app.utils.database import Base
 
-
 class Document(Base):
-    """
-    ORM model that stores metadata about each uploaded document.
-    Provides class methods for listing and deleting records.
-    """
-
     __tablename__ = "documents"
 
-    id = Column(String, primary_key=True, index=True)  # UUID or unique hash
-    filename = Column(String, nullable=False)          # Original filename
-    uploaded_at = Column(DateTime, default=datetime.datetime.utcnow)  # Upload time
-    chunk_count = Column(Integer, default=0)           # Number of chunks
-    extra_metadata = Column(JSON, nullable=True)       # Optional metadata (embedding_dim, etc.)
-    faiss_index_path = Column(String, nullable=True)   # Path to FAISS index on disk
+    id = Column(String, primary_key=True, index=True)
+    filename = Column(String, nullable=False)
+    uploaded_at = Column(DateTime, default=datetime.datetime.utcnow)
+    chunk_count = Column(Integer, default=0)
+    extra_metadata = Column(JSON, nullable=True)
+    faiss_index_path = Column(String, nullable=True)
 
+    user_id = Column(Integer, ForeignKey("users.id"))
+    owner = relationship("User", back_populates="documents")
  
     @classmethod
-    def list_documents(cls, db: Session):
+    def list_documents(
+        cls, 
+        db: Session,
+        user_id: int)-> list[dict] | None :
         """
         Retrieves all documents with minimal fields for API listing.
 
@@ -31,7 +31,7 @@ class Document(Base):
             List[dict]: Each record includes document_id, filename, upload time, chunk_count, and FAISS path.
         """
         try:
-            docs = db.query(cls).all()
+            docs = db.query(cls).filter(cls.user_id == user_id).all()
             if not docs:
                 return []
             return [
