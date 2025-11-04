@@ -10,9 +10,7 @@ from typing import Generator, Optional, Dict, Any
 load_dotenv()
 
 # --- Directory setup ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
-CONFIG_DIR = os.path.join(PROJECT_ROOT, "config")
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "LOCAL.yml")
 
 
 def load_config(section: Optional[str] = None) -> Dict[str, Any]:
@@ -24,26 +22,20 @@ def load_config(section: Optional[str] = None) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: Config dictionary or subsection.
     """
-    env = os.getenv("APP_ENV", "LOCAL").upper()
-    config_file = os.path.join(CONFIG_DIR, f"{env.lower()}.yml")
+    if not os.path.exists(CONFIG_PATH):
+        raise FileNotFoundError(f"Config file not found: {CONFIG_PATH}")
 
-    # Fallback: root/local.yml
-    if not os.path.exists(config_file):
-        config_file = os.path.join(PROJECT_ROOT, "local.yml")
-
-    if not os.path.exists(config_file):
-        raise FileNotFoundError(f"Config file not found: {config_file}")
-
-    with open(config_file, "r") as f:
+    with open(CONFIG_PATH, "r") as f:
         config: Dict[str, Any] = yaml.safe_load(f) or {}
 
     if section:
         if section not in config:
-            raise KeyError(f"Expected section '{section}' in {config_file}, found {list(config.keys())}")
+            raise KeyError(
+                f"Expected section '{section}' in {CONFIG_PATH}, found {list(config.keys())}"
+            )
         return config[section]
 
     return config
-
 
 def build_base_url(config: Dict[str, Any]) -> str:
     """
