@@ -8,7 +8,7 @@ This project demonstrates a complete **Retrieval-Augmented Generation (RAG)** pi
 🎥 Demo Video: https://drive.google.com/file/d/1ygtesu6QX_bHRywi9_rcBRMsXwIpw3zY/view?usp=drive_link
 
 ## 🚀 Features
-
+- 🔑 Login & Registration with 🛡️ **JWT-based Authorization**  
 - 📤 Upload PDF or TXT documents
 - 🧠 Generate embeddings using Hugging Face or OpenAI
 - 💾 Store embeddings in **FAISS** for similarity search
@@ -29,22 +29,51 @@ Frontend --- >
 
 Backend --- >
 
-<img width="1865" height="927" alt="full fastapi sceen" src="https://github.com/user-attachments/assets/4cb292ba-1552-4d9a-969a-b40d8ba99e8d" />
+<img width="1871" height="1023" alt="new_swagger" src="https://github.com/user-attachments/assets/6be4161d-09f7-43cd-8362-04c89efa6a54" />
 
 🏗️ Project Architecture
-User → Next.js Frontend → FastAPI Backend
-        ↓                       ↓
-  Upload Document       Extract Text (PyPDF2)
-        ↓                       ↓
-  Store Metadata (PostgreSQL)
-        ↓                       ↓
-  Generate Embeddings (Hugging Face)
-        ↓                       ↓
-  Store Vectors in FAISS
-        ↓                       ↓
-  Ask Question → Retrieve Chunks → LLM Answer
-        ↓
-  Display Answer on Frontend
+# 🎨 Design Pattern
+
+The project follows a **Layered Architecture** combined with a **Pipeline Pattern**:
+
+## 1️⃣ Layered Architecture
+
+- **Presentation Layer (Frontend)**  
+  - **Next.js** handles user interactions, document upload, and displaying answers.
+  
+- **Application/Service Layer (Backend)**  
+  - **FastAPI** orchestrates the workflow: document processing, embedding generation, vector storage, and question answering.
+
+- **Data Layer**  
+  - **PostgreSQL** stores document metadata.  
+  - **FAISS** stores vector embeddings for efficient similarity search.
+
+---
+
+## 2️⃣ Pipeline Pattern
+Each document uploaded flows through a **pipeline of processing steps**:
+
+1. **Upload Document** → Frontend triggers backend API  
+2. **Extract Text** → PyPDF2 parses document content  
+3. **Store Metadata** → PostgreSQL stores document info  
+4. **Generate Embeddings** → Hugging Face embeddings model  
+5. **Store Vectors** → FAISS index for semantic search  
+
+Similarly, **user questions** flow through a mini pipeline:
+
+1. **Ask Question** → Frontend sends to backend  
+2. **Retrieve Chunks** → FAISS searches relevant text vectors  
+3. **LLM Answer** → Large language model generates answer  
+4. **Display Answer** → Frontend renders response
+
+---
+
+## ✅ Benefits
+
+- **Separation of Concerns**: Each layer has a single responsibility  
+- **Scalability**: Can easily add new processing steps or LLM models  
+- **Reusability**: Pipeline steps can be reused for different document types  
+- **Maintainability**: Clear structure makes debugging and extending the system easier
 
   
 ## ⚙️ Tech Stack
@@ -60,41 +89,22 @@ User → Next.js Frontend → FastAPI Backend
 
 
 📁 Folder Structure
+
 <img width="346" height="852" alt="image" src="https://github.com/user-attachments/assets/753b2109-0ebf-4383-9453-9f44faf9e699" />
 
 
-## 🔑 Environment Variables
+## 🔑📝 Local Setup & Configuration
 
 Create a `.env` file inside your `backend/` folder:
 
 ```bash
-DATABASE_URL=postgresql://username:password@localhost:5432/qa_assistant
-FAISS_INDEX_PATH=./data/faiss_index
-UPLOAD_FOLDER=./uploads
-EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+This project uses:
 
-# Optional if using OpenAI
-OPENAI_API_KEY=your_openai_api_key_here
+All sensitive data and environment-specific settings are stored in a **`LOCAL.yml`** file so they can be easily managed without hardcoding them in your application.
 
-(Optional for OpenAI)
-
-OPENAI_API_KEY=your_openai_api_key_here
-
-🧠 How the RAG Flow Works
-
-Upload document → Extract text using PyPDF2
-
-Split text into chunks (500–1000 characters)
-
-Generate embeddings using Hugging Face
-
-Store embeddings in FAISS
-
-Save file details in PostgreSQL
-
-Ask question → Convert to embedding → Retrieve top chunks from FAISS
-
-Send context to AI → Generate and return answer
+- **PostgreSQL** for database storage
+- **JWT Authentication** for login & registration
+- Optional **GROQ API** for advanced data queries
 ```
 ```bash
 ⚙️ Setup Instructions
@@ -128,6 +138,19 @@ Frontend runs on http://localhost:3000
 
 ```
 
+```
+## 🐍 Python Environment
+
+This project uses **Pipenv** instead of `requirements.txt` for easier dependency management:
+
+- Creates an **isolated virtual environment** 🌱  
+- Locks package versions with `Pipfile.lock` 🔒  
+- Install dependencies with:  
+  ```bash
+  pipenv install
+
+```
+
 🧩 Example API
 📤 Upload a Document
 
@@ -146,6 +169,24 @@ Your FastAPI application should implement the following endpoints:
 7. DELETE /api/documents/{document_id} - Delete a document
 
    <img width="1408" height="788" alt="responce of delete the file" src="https://github.com/user-attachments/assets/6242d4ef-40f3-4e0c-b0b5-1637eee1ccf7" />
+
+```
+🧠 How the RAG Flow Works
+
+Upload document → Extract text using PyPDF2
+
+Split text into chunks (500–1000 characters)
+
+Generate embeddings using Hugging Face
+
+Store embeddings in FAISS
+
+Save file details in PostgreSQL
+
+Ask question → Convert to embedding → Retrieve top chunks from FAISS
+
+Send context to AI → Generate and return answer
+```
 
 ```bash
 Example Script:
