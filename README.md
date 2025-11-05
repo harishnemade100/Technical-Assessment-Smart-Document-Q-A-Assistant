@@ -19,6 +19,9 @@ This project demonstrates a complete **Retrieval-Augmented Generation (RAG)** pi
 ---
 
 ## 🏗️ System Architecture
+login page -- > 
+
+![Uploading image.png…]()
 
 Frontend --- >
 <img width="1490" height="816" alt="fornted" src="https://github.com/user-attachments/assets/a3b2bc95-ce86-41c0-b8ae-c0eddf8117c8" />
@@ -56,28 +59,8 @@ User → Next.js Frontend → FastAPI Backend
 
 
 📁 Folder Structure
-smart-document-qa-assistant/
-│
-├── backend/
-│   ├── app/
-│   │   ├── main.py                 # FastAPI entry point
-│   │   ├── routes/                 # Upload & Query APIs
-│   │   ├── services/               # RAG logic (embeddings, FAISS)
-│   │   ├── database.py             # PostgreSQL connection
-│   │   └── models/                 # SQLAlchemy models
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── app/                        # Next.js routes
-│   │   ├── page.tsx                # Upload page
-│   │   └── qa/page.tsx             # Q&A page
-│   ├── components/                 # UI components
-│   ├── lib/api.ts                  # Axios API functions
-│   └── package.json
-│
-├── sample_docs/                    # Example test documents
-├── .env.example                    # Environment variables template
-└── README.md
+<img width="346" height="852" alt="image" src="https://github.com/user-attachments/assets/753b2109-0ebf-4383-9453-9f44faf9e699" />
+
 
 ## 🔑 Environment Variables
 
@@ -123,14 +106,19 @@ cd smart-document-qa-assistant
 
 2️⃣ Backend Setup
 cd backend
-python -m venv venv
-source venv/bin/activate    # (venv\Scripts\activate on Windows)
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+pip install pipenv
+pipenv install
+cd ..
+
+RUN Backend -- > 
+uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000                                                                                                   
 
 3️⃣ Frontend Setup
 cd frontend
+npm install react-hot-toast  
 npm install
+
+RUN Frontend -->
 npm run dev
 
 Backend runs on http://localhost:8000
