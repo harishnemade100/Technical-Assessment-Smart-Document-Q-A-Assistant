@@ -21,7 +21,8 @@ This project demonstrates a complete **Retrieval-Augmented Generation (RAG)** pi
 ## 🏗️ System Architecture
 login page -- > 
 
-![Uploading image.png…]()
+<img width="1867" height="932" alt="login apge" src="https://github.com/user-attachments/assets/7099de28-4885-4439-bc58-f278b903864d" />
+
 
 Frontend --- >
 <img width="1490" height="816" alt="fornted" src="https://github.com/user-attachments/assets/a3b2bc95-ce86-41c0-b8ae-c0eddf8117c8" />
