@@ -1,15 +1,19 @@
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 from backend.app.schema.document_schema import DocumentOut
-from backend.app.models.models import Document
+from backend.app.models.doc_models import Document
 
 from backend.app.utils.database import get_db
+from backend.app.services.auth.auth_service import get_current_user
 
 router = APIRouter(tags=["List Documents"])
 
 
 @router.get("/", response_model=list[DocumentOut])
-def get_all_documents(db: Session = Depends(get_db)):
+def get_all_documents(
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user), 
+    ):
     """
     Retrieve all uploaded documents from the database.
 
@@ -19,18 +23,18 @@ def get_all_documents(db: Session = Depends(get_db)):
 
     """
     try:
-        documents = Document.list_documents(db)
+        documents = Document.list_documents(db, user_id=current_user.id)
         if not documents:
-            raise HTTPException(status_code=404, detail="No documents found.")
+            raise HTTPException(status_code=404, detail="No documents found for this user.")
 
         return documents
-        
+
     except HTTPException as http_err:
         raise http_err
 
     except Exception as e:
-        print(f" Error retrieving documents: {e}")
+        print(f"Error retrieving documents: {e}")
         raise HTTPException(
             status_code=500,
-            detail=f"Error retrieving documents: {str(e)}",
+            detail=f"Internal server error: {str(e)}",
         )

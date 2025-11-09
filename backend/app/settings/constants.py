@@ -1,5 +1,11 @@
 # Constants for settings
 
+
+SECRET_KEY = "6d2c50e9908ea5b15a5b4097b55ed8ac" 
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
+
+
 # This file defines default configuration constants used
 # across the text processing or embedding modules.
 

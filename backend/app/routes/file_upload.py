@@ -3,6 +3,7 @@ import traceback
 from fastapi import APIRouter, UploadFile, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from backend.app.utils.database import get_db
+from backend.app.services.auth.auth_service import get_current_user
 from backend.app.utils.file_utils import FileUtils
 from backend.app.services.text_extraction import TextExtractor
 from backend.app.services.text_spitter import TextSplitter
@@ -13,29 +14,29 @@ from backend.app.services.metadata_service import MetadataService
 
 
 router = APIRouter(tags=["File Upload"])
-
-
 @router.post("/upload", response_model=UploadResponse)
-async def upload_document(file: UploadFile, db: Session = Depends(get_db)):
+async def upload_document(
+    file: UploadFile,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user),  # ensure user is authenticated
+):
     """
     Upload and process a document (PDF/TXT) for semantic retrieval and Q&A.
+    Only authenticated users can upload.
 
-    This endpoint accepts a document upload, extracts its text content,
-    splits it into manageable chunks, generates embeddings, and stores
-    both the embeddings (in FAISS) and metadata (in PostgreSQL).
-    : Workflow:
+    Workflow:
     1. Validate and save the uploaded file.
-    2. Extract text content from the file.
-    3. Split the text into smaller overlapping chunks.
-    4. Generate sentence embeddings for each chunk.
-    5. Persist the FAISS index to disk.
-    6. Save document metadata (e.g., FAISS path, upload time) in PostgreSQL.
+    2. Extract text content.
+    3. Split the text into manageable chunks.
+    4. Generate embeddings for each chunk.
+    5. Persist embeddings in FAISS.
+    6. Save document metadata in the database, linked to the current user.
 
-
-    :param file: Uploaded file (PDF or TXT).
-    :param db: Database session dependency.
-    :return: UploadResponse with document details and upload status.
-    :raises HTTPException: If validation, extraction, embedding, or storage fails.
+    :param file: Uploaded file (PDF or TXT)
+    :param db: Database session dependency
+    :param current_user: Logged-in user from JWT
+    :return: UploadResponse with document info
+    :raises HTTPException: If validation, extraction, embedding, or storage fails
     """
     try:
         # Validate file extension
@@ -54,7 +55,6 @@ async def upload_document(file: UploadFile, db: Session = Depends(get_db)):
             if not text or not text.strip():
                 raise HTTPException(status_code=400, detail="No readable text found in document.")
         except Exception as extract_err:
-            print(f" Text extraction failed: {extract_err}")
             raise HTTPException(status_code=400, detail=f"Text extraction error: {extract_err}")
 
         # Split text into chunks
@@ -68,8 +68,8 @@ async def upload_document(file: UploadFile, db: Session = Depends(get_db)):
         embeddings = embedder.create_embeddings(chunks)
         if not embeddings:
             raise HTTPException(status_code=400, detail="Embedding generation failed.")
-        print(f" Generated {len(embeddings)} embeddings (dim={len(embeddings[0])}).")
 
+        # Store embeddings in FAISS and save metadata
         try:
             vector_store = FAISSVectorStore(embedding_dim=len(embeddings[0]))
             vector_ids = vector_store.add_embeddings(embeddings)
@@ -82,11 +82,9 @@ async def upload_document(file: UploadFile, db: Session = Depends(get_db)):
                 chunks=chunks,
                 embedding_dim=len(embeddings[0]),
                 faiss_index_path=vector_store.index_path,
+                user_id=current_user.id,  # link document to the user
             )
-
-            print(f" Stored {document_id} vectors in FAISS.")
         except Exception as faiss_err:
-            print(f"❌ FAISS indexing failed: {faiss_err}")
             raise HTTPException(status_code=500, detail=f"FAISS indexing failed: {faiss_err}")
 
         return UploadResponse(

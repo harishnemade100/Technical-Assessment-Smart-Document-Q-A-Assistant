@@ -1,14 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UploadBox from "@/components/UploadBox";
 import DocumentList from "@/components/DocumentList";
 import AskQuestionBox from "@/components/AskQuestionBox";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Toaster } from "sonner";
+import AuthModal from "@/components/AuthModal";
+import { Toaster, toast } from "sonner";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("upload");
+  const [isAuth, setIsAuth] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("username");
+    if (token) {
+      setIsAuth(true);
+      if (user) setUsername(user);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setIsAuth(false);
+    toast.success("Logged out successfully!");
+  };
+
+  if (!isAuth) return <AuthModal onAuthSuccess={() => setIsAuth(true)} />;
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200 flex flex-col items-center py-10 px-4">
@@ -18,7 +39,19 @@ export default function Page() {
           <h1 className="text-3xl font-bold text-indigo-400 tracking-wide">
             ⚡ Smart Document Q&A Assistant
           </h1>
-          <ThemeToggle />
+
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-gray-400">
+              👤 {username || "User"}
+            </span>
+            <button
+              onClick={handleLogout}
+              className="px-4 py-1 text-sm bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-all"
+            >
+              Logout
+            </button>
+            <ThemeToggle />
+          </div>
         </header>
 
         {/* Navigation Tabs */}
@@ -42,9 +75,11 @@ export default function Page() {
           ))}
         </nav>
 
-        {/* Content */}
+        {/* Main Content */}
         <main className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 shadow-2xl">
-          {activeTab === "upload" && <UploadBox onUpload={() => setActiveTab("list")} />}
+          {activeTab === "upload" && (
+            <UploadBox onUpload={() => setActiveTab("list")} />
+          )}
           {activeTab === "list" && <DocumentList />}
           {activeTab === "ask" && <AskQuestionBox />}
         </main>
