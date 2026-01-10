@@ -1,3 +1,6 @@
+import re
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
 from backend.app.settings.constants import DEFAULT_CHUNK_SIZE, DEFAULT_OVERLAP
 
 
