@@ -1,51 +1,97 @@
-from PyPDF2 import PdfReader
 from fastapi import HTTPException
+from langchain_community.document_loaders import (
+    PyPDFLoader,
+    TextLoader
+)
+from langchain_core.documents import Document
 
 
 class TextExtractor:
     """
-    Extracts text content from supported document formats.
+    LangChain-based document text extractor.
+
+    Uses official LangChain loaders to ensure:
+    - Standard Document objects
+    - Page-level metadata
+    - Compatibility with chunking and RAG pipelines
     """
 
     @staticmethod
-    def extract_text(file_path: str) -> str:
+    def extract(file_path: str) -> list[Document]:
         """
-        Extracts text depending on file type.
+        Extracts content from supported file types and
+        returns LangChain Document objects.
+
+        :param file_path: Path to the input file.
+        :type file_path: str
+        :return: List of extracted Document objects.
         """
         try:
             ext = file_path.split(".")[-1].lower()
 
             if ext == "pdf":
-                return TextExtractor._extract_pdf_text(file_path)
+                return TextExtractor._extract_pdf(file_path)
             elif ext == "txt":
-                return TextExtractor._extract_txt_text(file_path)
+                return TextExtractor._extract_txt(file_path)
             else:
-                raise HTTPException(status_code=400, detail=f"Unsupported file format: {ext}")
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Unsupported file format: {ext}"
+                )
+
+        except HTTPException:
+            raise
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Text extraction failed: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Text extraction failed: {str(e)}"
+            )
 
     @staticmethod
-    def _extract_pdf_text(file_path: str) -> str:
+    def _extract_pdf(file_path: str) -> list[Document]:
         """
-        Extracts text from PDF using PyPDF2.
+        Extracts text from PDF using LangChain PyPDFLoader.
+        Each page becomes a Document with metadata.
+
+        :param file_path: Path to the PDF file.
+        :type file_path: str
+        :return: List of Document objects for each page.
         """
         try:
-            text = ""
-            with open(file_path, "rb") as f:
-                reader = PdfReader(f)
-                for page in reader.pages:
-                    text += page.extract_text() or ""
-            return text.strip()
+            loader = PyPDFLoader(file_path)
+            documents = loader.load()
+
+            # Add source metadata
+            for doc in documents:
+                doc.metadata["source"] = file_path
+
+            return documents
+
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"PDF extraction error: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"PDF extraction error: {str(e)}"
+            )
 
     @staticmethod
-    def _extract_txt_text(file_path: str) -> str:
+    def _extract_txt(file_path: str) -> list[Document]:
         """
-        Extracts text from plain .txt files.
+        Extracts text from TXT using LangChain TextLoader.
+        :param file_path: Path to the TXT file.
+        :type file_path: str
+        :return: List of Document objects.
         """
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                return f.read().strip()
+            loader = TextLoader(file_path, encoding="utf-8")
+            documents = loader.load()
+
+            for doc in documents:
+                doc.metadata["source"] = file_path
+
+            return documents
+
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"TXT extraction error: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"TXT extraction error: {str(e)}"
+            )

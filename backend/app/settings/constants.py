@@ -11,11 +11,11 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 # Default number of characters in each text chunk.
 # Larger values mean fewer chunks but risk cutting off context.
-DEFAULT_CHUNK_SIZE = 800  
+DEFAULT_CHUNK_SIZE = 1000  
 
 # Number of overlapping characters between consecutive chunks.
 # Helps preserve context between split text segments.
-DEFAULT_OVERLAP = 100  
+DEFAULT_OVERLAP = 250  
 
 
 # -----------------------------------------------------------
