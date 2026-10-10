@@ -25,8 +25,18 @@ import db
 # ---------------------------------------------------------------------------
 # Settings (same values as backend/app/settings/constants.py)
 # ---------------------------------------------------------------------------
+def get_setting(name: str, default: str) -> str:
+    """Read an optional setting from Streamlit secrets, falling back to a default."""
+    try:
+        return st.secrets.get(name, default)
+    except Exception:
+        return default
+
+
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL = "llama-3.3-70b-versatile"
+# Groq retires models over time. To switch models, add LLM_MODEL = "model-name" in Secrets.
+# Current models: https://console.groq.com/docs/models
+LLM_MODEL = get_setting("LLM_MODEL", "llama-3.3-70b-versatile")
 LLM_TEMPERATURE = 0.2
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
@@ -101,6 +111,23 @@ def answer_question(user_id: int, doc_id: str, question: str):
         ],
     )
     return response.choices[0].message.content.strip(), sources
+
+
+def model_help_message() -> str:
+    """Explain how to fix a retired Groq model and list the models this API key can use."""
+    text = (
+        f"The AI model `{LLM_MODEL}` isn't available on Groq anymore. "
+        "Choose a current model and add it to your app's Secrets, for example:\n\n"
+        '`LLM_MODEL = "model-name-here"`\n\n'
+    )
+    try:
+        ids = sorted(m.id for m in get_llm().models.list().data)
+        skip = ("whisper", "tts", "guard", "playai", "orpheus")
+        chat_ids = [i for i in ids if not any(word in i.lower() for word in skip)]
+        text += "Models your Groq key can use:\n\n" + "\n".join(f"- `{i}`" for i in chat_ids)
+    except Exception:
+        text += "See the list of current models at https://console.groq.com/docs/models"
+    return text
 
 
 # ---------------------------------------------------------------------------
@@ -269,6 +296,8 @@ if question := st.chat_input(f"Ask a question about {selected_name}"):
                 message = str(e)
                 if "rate" in message.lower() and "limit" in message.lower():
                     reply = "Too many questions right now. Wait a minute and try again."
+                elif "model_not_found" in message or "decommissioned" in message:
+                    reply = model_help_message()
                 else:
                     reply = f"Couldn't get an answer: {message}"
                 sources, failed = [], True
