@@ -1,0 +1,26 @@
+# Secrets (never upload these)
+.env
+backend/.env
+backend/LOCAL.yml
+.streamlit/secrets.toml
+streamlit_app/.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node / Next.js build output
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+dist/
+out/
+build/
+
+# Misc
+*.log
+*.zip
+data/
